@@ -1,14 +1,16 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     var checkbox = document.getElementById('toggleAwake');
+    var disableScheduleCheckbox = document.getElementById('disableSchedule');
     var setScheduleButton = document.getElementById('setSchedule');
     var clearScheduleButton = document.getElementById('clearSchedule');
     var startTimeInput = document.getElementById('startTime');
     var endTimeInput = document.getElementById('endTime');
 
     // Load the initial state of the checkbox and the schedule
-    chrome.storage.local.get(['keepAwakeEnabled', 'startTime', 'endTime'], function(result) {
+    chrome.storage.local.get(['keepAwakeEnabled', 'disableSchedule', 'startTime', 'endTime'], function(result) {
         checkbox.checked = result.keepAwakeEnabled || false;
+        disableScheduleCheckbox.checked = result.disableSchedule || false;
         startTimeInput.value = result.startTime || '';
         endTimeInput.value = result.endTime || '';
     });
@@ -17,6 +19,13 @@ document.addEventListener('DOMContentLoaded', function() {
     checkbox.addEventListener('change', function() {
         chrome.runtime.sendMessage({message: "toggle", state: checkbox.checked}, function(response) {
             console.log(response.status);
+        });
+    });
+
+    // Add a listener for when the disable schedule checkbox changes
+    disableScheduleCheckbox.addEventListener('change', function() {
+        chrome.runtime.sendMessage({message: "toggleDisableSchedule", state: disableScheduleCheckbox.checked}, function(response) {
+            console.log('Disable schedule set to: ' + response.state);
         });
     });
 
