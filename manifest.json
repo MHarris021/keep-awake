@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Keep Awake",
+  "version": "1.0",
+  "description": "Keep your device awake as per your schedule.",
+  "permissions": ["power", "storage", "alarms"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "./options/options.html",
+    "default_icon": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    }
+  },
+  "options_page": "./options/options.html",
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  }
+}
