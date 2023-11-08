@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Keep Awake",
-  "version": "1.0",
+  "version": "1.0.0",
   "description": "Keep your device awake as per your schedule.",
   "permissions": ["power", "storage", "alarms"],
   "background": {

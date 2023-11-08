@@ -26,6 +26,10 @@ document.addEventListener('DOMContentLoaded', function() {
     disableScheduleCheckbox.addEventListener('change', function() {
         chrome.runtime.sendMessage({message: "toggleDisableSchedule", state: disableScheduleCheckbox.checked}, function(response) {
             console.log('Disable schedule set to: ' + response.state);
+            startTimeInput.disabled = disableScheduleCheckbox.checked;
+            endTimeInput.disabled = disableScheduleCheckbox.checked;
+            setScheduleButton.disabled = disableScheduleCheckbox.checked;
+            clearScheduleButton.disabled = disableScheduleCheckbox.checked;
         });
     });
 
