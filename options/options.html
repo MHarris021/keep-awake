@@ -1,27 +1,38 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Keep Awake Options</title>
+    <link rel="stylesheet" href="options.css">
 </head>
 <body>
+<div class="container"> <!-- Container to hold all the elements -->
 <h1>Keep Awake Options</h1>
 <label>
+    <span class="label-text">Keep device awake</span>
     <input type="checkbox" id="toggleAwake">
-    Keep device awake
+    <span class="toggle-switch"></span>
 </label>
-<!-- Add below the Keep device awake checkbox in options.html -->
 <div>
     <h2>Schedule</h2>
     <label>
+        <span class="label-text">Disable Schedule</span>
         <input type="checkbox" id="disableSchedule">
-        Disable scheduled times
+        <span class="toggle-switch"></span>
     </label>
-    <label for="startTime">Start Time:</label>
-    <input type="time" id="startTime">
-    <label for="endTime">End Time:</label>
-    <input type="time" id="endTime">
-    <button id="setSchedule">Set Schedule</button>
-    <button id="clearSchedule">Clear</button>
+    <label for="startTime">
+        <span class="label-text">Start Time:</span>
+        <input type="time" id="startTime">
+    </label>
+    <label for="endTime">
+        <span class="label-text">End Time:</span>
+        <input type="time" id="endTime">
+    </label>
+    <div id="buttonDiv">
+        <button id="setSchedule">Set Schedule</button>
+        <button id="clearSchedule">Clear Schedule</button>
+    </div>
+</div>
 </div>
 <script src="options.js"></script>
 </body>

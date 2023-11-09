@@ -1,0 +1,132 @@
+body {
+    font-family: 'Orbitron', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: transparent; /* Make body background transparent */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw; /* Full viewport width */
+    overflow: hidden; /* Hide scrollbars */
+}
+.container {
+    padding: 20px;
+    margin: 1px;
+    border-radius: 15px; /* Rounded corners for the container */
+    box-shadow: 0 0 10px #39ff14 inset; /* Shadow for 3D effect */
+    background-color: #000; /* Dark background for the container */
+    overflow: hidden; /* Ensure the shadow doesn't leak outside the border-radius */
+}
+h1, h2 {
+    color: #ff0099;
+    text-align: center; /* Centered headers */
+    text-shadow: 2px 2px 2px #000; /* 3D text effect */
+}
+h2 {
+    font-size: 2em; /* Larger font size for headers */
+}
+h1 {
+    margin-top: 0;
+    margin-bottom: 20px; /* Add space below the header */
+    font-size: 3em; /* Larger font size for headers */
+}
+label {
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space between label text and input/toggle */
+    align-items: center; /* Align items vertically */
+    margin-bottom: 10px; /* Space below labels */
+    padding: 10px;
+    border: 1px solid #39ff14; /* Green border for the labels */
+    border-radius: 15px; /* Rounded edges for the labels */
+    box-shadow: 0 0 10px #39ff14 inset; /* Inner shadow for a 3D effect */
+    background-color: #111; /* Slightly lighter background for label area */
+}
+label > span.label-text {
+    /* Explicitly define a span to hold the label text to better control layout */
+    margin-right: 0.5em; /* Space after the label text */
+    font-size: medium;
+}
+input[type="checkbox"], input[type="time"] {
+    /* ... existing checkbox and time input styles ... */
+    margin-left: auto; /* Push checkbox and time input to the right */
+    margin-right: 0; /* Remove space between checkbox and time input */
+}
+input[type="checkbox"] {
+    display: none; /* Hide checkbox */
+}
+input[type="time"] {
+    background-color: #222; /* Darker element backgrounds */
+    border: 1px solid #39ff14;
+    color: #39ff14;
+    margin-right: 10px;
+    border-radius: 5px; /* Rounded corners for input fields */
+    padding: 5px;
+    box-shadow: 0 4px #999; /* 3D effect for input fields */
+    margin-bottom: 10px; /* Add space below the input */
+    display: inline-block; /* Make input inline-block for same-line layout */
+    vertical-align: middle; /* Align the input with the label */
+}
+input[type="time"]:focus {
+    box-shadow: 0 0 8px 0 #39ff14; /* Focus effect */
+}
+.toggle-switch {
+    position: relative;
+    display: inline-block; /* Make toggle-switch inline-block */
+    width: 60px;
+    height: 34px;
+    background-color: #ccc;
+    border-radius: 34px; /* Rounded corners for the toggle-switch */
+    box-shadow: 0 2px 4px #000 inset; /* Inner shadow for a 3D effect */
+}
+.toggle-switch::before {
+    content: "";
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%; /* Rounded corners for the toggle knob */
+    box-shadow: 0 4px 2px -2px #000; /* Shadow on the knob for 3D effect */
+}
+input:checked + .toggle-switch {
+    background-color: #ff0099;
+}
+input[type="checkbox"]:checked + .toggle-switch::before {
+    transform: translateX(26px); /* Move the toggle knob to the right */
+}
+input[type="time"] {
+    background-color: #222; /* Darker element backgrounds */
+    border: 1px solid #39ff14;
+    color: #39ff14;
+    margin-right: 0;
+}
+button {
+    background-color: #ff0099;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    color: #011627;
+    margin: 10px 5px 0; /* Space around buttons */
+    display: inline-block; /* Align buttons next to each other */
+    border-radius: 10px; /* Rounded corners for buttons */
+    box-shadow: 0 4px #999; /* 3D effect */
+}
+button:hover {
+    background-color: #ff00cc;
+}
+button:active {
+    background-color: #ff00cc;
+    box-shadow: 0 2px #666;
+    transform: translateY(4px); /* Move down when clicked */
+}
+div#buttonDiv {
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space between buttons */
+    align-items: center; /* Align items vertically */
+    margin-bottom: 5px; /* Space below buttons */
+}
+div {
+    margin-top: 20px;
+}
