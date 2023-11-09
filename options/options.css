@@ -1,26 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap');
+
+:root {
+    --neon-blue: #00FFFF;
+    --neon-green: #00FF00;
+    --neon-pink: #FF007F;
+    --dark-background: #121212;
+    --light-text: #E5E5E5;
+    --dark-text: #333;
+    --disabled-background: #2E2E2E;
+    --disabled-text: #555;
+    --toggle-off: #bbb;
+    --shadow-blue: #008b8b;
+    --shadow-pink: #cc0066;
+    --shadow-green: #009900;
+}
+
+@keyframes pulse-blue {
+    0% {
+        box-shadow: 0 0 0 var(--shadow-blue) inset;
+    }
+    70% {
+        box-shadow: 0 0 10px var(--neon-blue) inset;
+    }
+    100% {
+        box-shadow: 0 0 0 var(--shadow-blue) inset;
+    }
+}
+
+@keyframes pulse-green {
+    0% {
+        box-shadow: 0 0 10px var(--neon-green) inset;
+    }
+    70% {
+        box-shadow: 0 0 0 var(--shadow-green) inset;
+    }
+    100% {
+        box-shadow: 0 0 10px var(--neon-green) inset;
+    }
+}
+
+@keyframes moveGrid {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+@keyframes pulse-text-blue {
+    0% {
+        transform: scale(1);
+        color: var(--light-text);
+        text-shadow: 0 0 4px var(--neon-blue), 0 0 11px var(--neon-blue), 0 0 19px var(--neon-blue);
+    }
+    70% {
+        transform: scale(1.05);
+        color: var(--neon-blue);
+        text-shadow: 0 0 20px var(--neon-blue), 0 0 30px var(--neon-pink), 0 0 40px var(--neon-blue);
+    }
+    100% {
+        transform: scale(1);
+        color: var(--light-text);
+        text-shadow: 0 0 4px var(--neon-blue), 0 0 11px var(--neon-blue), 0 0 19px var(--neon-blue);
+    }
+}
+
+@keyframes pulse-text-pink {
+    0% {
+        transform: scale(1);
+        color: var(--neon-pink);
+        text-shadow: 0 0 4px var(--neon-pink), 0 0 11px var(--neon-blue), 0 0 19px var(--neon-pink);
+    }
+    70% {
+        transform: scale(0.95);
+        color: var(--light-text);
+        text-shadow: 0 0 20px var(--neon-pink), 0 0 30px var(--neon-pink), 0 0 40px var(--neon-pink);
+    }
+    100% {
+        transform: scale(1);
+        color: var(--neon-pink);
+        text-shadow: 0 0 4px var(--neon-pink), 0 0 11px var(--neon-blue), 0 0 19px var(--neon-pink);
+    }
+}
+
+.pulsing-text {
+    display: inline-block; /* Required for transform to work */
+    animation: pulse-text-blue 6s infinite ease-in-out;
+}
+
+.pulsing-header {
+    display: inline-block; /* Required for transform to work */
+    animation: pulse-text-pink 6s infinite ease-in-out;
+}
+
+.pulse-blue {
+    animation: pulse-blue 6s infinite ease-in-out;
+}
+
+.pulse-green {
+    animation: pulse-green 6s infinite ease-in-out;
+}
+
 body {
     font-family: 'Orbitron', sans-serif;
     margin: 0;
     padding: 0;
-    background: transparent; /* Make body background transparent */
+    background: none; /* Make body background transparent */
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100vw; /* Full viewport width */
     overflow: hidden; /* Hide scrollbars */
+    opacity: 90%;
 }
 .container {
     padding: 20px;
-    margin: 1px;
-    border-radius: 15px; /* Rounded corners for the container */
-    box-shadow: 0 0 10px #39ff14 inset; /* Shadow for 3D effect */
-    background-color: #000; /* Dark background for the container */
+    margin: 0px;
+    border-radius: 5px; /* Rounded corners for the container */
+    box-shadow: 0 0 10px var(--shadow-green) inset; /* Shadow for 3D effect */
+    background-color: var(--dark-background);; /* Dark background for the container */
+
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0.05) 75%, transparent 75%, transparent);
+    background-size: 50px 50px;
+    animation: moveGrid 10s linear infinite;
     overflow: hidden; /* Ensure the shadow doesn't leak outside the border-radius */
 }
 h1, h2 {
-    color: #ff0099;
+    color: var(--neon-pink);
     text-align: center; /* Centered headers */
-    text-shadow: 2px 2px 2px #000; /* 3D text effect */
+    text-shadow: 2px 2px 2px var(--shadow-pink); /* 3D text effect */
 }
 h2 {
     font-size: 2em; /* Larger font size for headers */
@@ -36,47 +145,49 @@ label {
     align-items: center; /* Align items vertically */
     margin-bottom: 10px; /* Space below labels */
     padding: 10px;
-    border: 1px solid #39ff14; /* Green border for the labels */
+    border: 1px solid var(--neon-green); /* Green border for the labels */
     border-radius: 15px; /* Rounded edges for the labels */
-    box-shadow: 0 0 10px #39ff14 inset; /* Inner shadow for a 3D effect */
-    background-color: #111; /* Slightly lighter background for label area */
+    box-shadow: 0 0 10px var(--shadow-green) inset; /* Inner shadow for a 3D effect */
+    background-color: var(--dark-background); /* Slightly lighter background for label area */
 }
 label > span.label-text {
     /* Explicitly define a span to hold the label text to better control layout */
     margin-right: 0.5em; /* Space after the label text */
     font-size: medium;
+    color: var(--neon-blue);
 }
 input[type="checkbox"], input[type="time"] {
     /* ... existing checkbox and time input styles ... */
     margin-left: auto; /* Push checkbox and time input to the right */
     margin-right: 0; /* Remove space between checkbox and time input */
+    color: var(--neon-blue);
 }
 input[type="checkbox"] {
     display: none; /* Hide checkbox */
 }
 input[type="time"] {
     background-color: #222; /* Darker element backgrounds */
-    border: 1px solid #39ff14;
-    color: #39ff14;
+    border: 1px solid var(--neon-blue);
+    color: var(--neon-blue);
     margin-right: 10px;
     border-radius: 5px; /* Rounded corners for input fields */
     padding: 5px;
-    box-shadow: 0 4px #999; /* 3D effect for input fields */
+    box-shadow: 0 4px var(--shadow-blue); /* 3D effect for input fields */
     margin-bottom: 10px; /* Add space below the input */
     display: inline-block; /* Make input inline-block for same-line layout */
     vertical-align: middle; /* Align the input with the label */
 }
 input[type="time"]:focus {
-    box-shadow: 0 0 8px 0 #39ff14; /* Focus effect */
+    box-shadow: 0 0 8px 0 var(--shadow-blue); /* Focus effect */
 }
 .toggle-switch {
     position: relative;
     display: inline-block; /* Make toggle-switch inline-block */
     width: 60px;
     height: 34px;
-    background-color: #ccc;
+    background-color: var(--toggle-off);
     border-radius: 34px; /* Rounded corners for the toggle-switch */
-    box-shadow: 0 2px 4px #000 inset; /* Inner shadow for a 3D effect */
+    box-shadow: 0 2px 4px var(--shadow-blue) inset; /* Inner shadow for a 3D effect */
 }
 .toggle-switch::before {
     content: "";
@@ -85,41 +196,50 @@ input[type="time"]:focus {
     height: 26px;
     left: 4px;
     bottom: 4px;
-    background-color: white;
+    background-color: var(--dark-background);
     transition: 0.4s;
     border-radius: 50%; /* Rounded corners for the toggle knob */
     box-shadow: 0 4px 2px -2px #000; /* Shadow on the knob for 3D effect */
 }
 input:checked + .toggle-switch {
-    background-color: #ff0099;
+    background-color: var(--neon-blue);
 }
 input[type="checkbox"]:checked + .toggle-switch::before {
     transform: translateX(26px); /* Move the toggle knob to the right */
 }
 input[type="time"] {
     background-color: #222; /* Darker element backgrounds */
-    border: 1px solid #39ff14;
-    color: #39ff14;
+    border: 1px solid var(--neon-blue);
+    color: var(--neon-blue);
     margin-right: 0;
 }
 button {
-    background-color: #ff0099;
+    background-color: var(--neon-pink);
     border: none;
     padding: 10px 20px;
     cursor: pointer;
-    color: #011627;
+    color: var(--dark-background);
     margin: 10px 5px 0; /* Space around buttons */
     display: inline-block; /* Align buttons next to each other */
     border-radius: 10px; /* Rounded corners for buttons */
-    box-shadow: 0 4px #999; /* 3D effect */
+    box-shadow: 0 4px var(--shadow-pink); /* 3D effect */
 }
 button:hover {
     background-color: #ff00cc;
+    text-shadow: none;
+    box-shadow: 2px 2px 5px #39ff14 inset;
 }
 button:active {
     background-color: #ff00cc;
     box-shadow: 0 2px #666;
     transform: translateY(4px); /* Move down when clicked */
+}
+button:disabled {
+    background-color: #555;
+    color: #777;
+    cursor: not-allowed;
+    box-shadow: none;
+    border: 1px solid #555;
 }
 div#buttonDiv {
     display: flex; /* Use flexbox for layout */

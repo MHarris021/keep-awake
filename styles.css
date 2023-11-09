@@ -1,0 +1,261 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap');
+
+:root {
+    --neon-blue: #00FFFF;
+    --neon-green: #00FF00;
+    --neon-pink: #FF007F;
+    --dark-background: #121212;
+    --light-text: #E5E5E5;
+    --dark-text: #333;
+    --disabled-background: #2E2E2E;
+    --disabled-text: #555;
+    --toggle-off: #bbb;
+    --shadow-blue: #008b8b;
+    --shadow-pink: #cc0066;
+    --shadow-green: #009900;
+}
+
+body {
+    margin: 0;
+    font-family: 'Orbitron', sans-serif;
+    background-color: var(--dark-background);
+    color: var(--light-text);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--light-text);
+}
+
+a {
+    color: var(--neon-pink);
+    text-decoration: none;
+}
+
+a:hover, a:focus {
+    color: var(--neon-blue);
+    text-decoration: underline;
+}
+
+.btn {
+    padding: 10px 20px;
+    color: var(--light-text);
+    background-color: var(--neon-green);
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 5px var(--shadow-green);
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+
+.btn:hover {
+    background-color: var(--neon-pink);
+    box-shadow: 0 5px var(--shadow-pink);
+}
+
+.btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px var(--shadow-pink);
+}
+
+.btn:disabled {
+    background-color: var(--disabled-background);
+    color: var(--disabled-text);
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+input[type='text'], input[type='email'], input[type='password'], textarea {
+    background-color: #1e1e1e;
+    border: 1px solid var(--neon-blue);
+    color: var(--light-text);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 5px var(--shadow-blue);
+    transition: all 0.3s ease;
+}
+
+input[type='text']:focus, input[type='email']:focus, input[type='password']:focus, textarea:focus {
+    outline: none;
+    border-color: var(--neon-pink);
+    box-shadow: 0 0 8px var(--neon-pink);
+}
+
+input[type='text']:disabled, input[type='email']:disabled, input[type='password']:disabled, textarea:disabled {
+    background-color: var(--disabled-background);
+    color: var(--disabled-text);
+    box-shadow: none;
+}
+
+.navbar {
+    background-color: var(--dark-background);
+    border-bottom: 2px solid var(--neon-blue);
+}
+
+.card {
+    background-color: var(--dark-background);
+    border: 1px solid var(--neon-pink);
+    border-radius: 5px;
+    box-shadow: 0 5px var(--shadow-pink);
+}
+
+.card-header {
+    padding: 10px;
+    background-color: var(--neon-blue);
+    color: var(--dark-text);
+}
+
+.card-content {
+    padding: 20px;
+}
+
+/* Toggle Switch Styles */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--toggle-off);
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: var(--dark-background);
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--neon-blue);
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px var(--neon-blue);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Other Styles... */
+
+/* Enhance 3D effect on hover for inputs
+/* 3D Button */
+.btn-3d {
+    background-color: var(--neon-blue);
+    border: none;
+    color: var(--dark-background);
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 5px #009999; /* Darker shade of neon blue for the shadow */
+    transition: all 0.1s ease-in-out;
+}
+
+.btn-3d:active {
+    box-shadow: 0 2px #009999;
+    transform: translateY(3px);
+}
+
+/* 3D Input */
+.input-3d {
+    border: none;
+    padding: 10px;
+    margin: 5px 0;
+    box-shadow: 0 5px #004d4d; /* Darker shade of neon blue for the shadow */
+    transition: all 0.1s ease-in-out;
+}
+
+.input-3d:focus {
+    box-shadow: 0 2px #004d4d;
+    transform: translateY(3px);
+}
+
+/* Toggle Switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--toggle-off);
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: var(--dark-background);
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--neon-blue);
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px var(--neon-blue);
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Disabled State Styling for Buttons and Inputs */
+.btn-3d:disabled,
+.input-3d:disabled {
+    background-color: var(--disabled-background);
+    color: var(--disabled-text);
+    box-shadow: none;
+    cursor: not-allowed;
+}
+
+/* Enhance 3D effect on hover for buttons */
+.btn-3d:not(:disabled):hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px #009999;
+}
