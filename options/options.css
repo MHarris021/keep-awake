@@ -5,6 +5,7 @@
     --neon-green: #00FF00;
     --neon-pink: #FF007F;
     --dark-background: #121212;
+    --light-background: #2E2E2E;
     --light-text: #E5E5E5;
     --dark-text: #333;
     --disabled-background: #2E2E2E;
@@ -19,7 +20,7 @@
     0% {
         box-shadow: 0 0 0 var(--shadow-blue) inset;
     }
-    70% {
+    50% {
         box-shadow: 0 0 10px var(--neon-blue) inset;
     }
     100% {
@@ -31,30 +32,37 @@
     0% {
         box-shadow: 0 0 10px var(--neon-green) inset;
     }
-    70% {
+    50% {
         box-shadow: 0 0 0 var(--shadow-green) inset;
     }
     100% {
         box-shadow: 0 0 10px var(--neon-green) inset;
     }
 }
-
 @keyframes moveGrid {
     0% {
-        background-position: 0 0;
+        background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0;
+    }
+    25% {
+        background-position: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+    }
+    50% {
+        background-position: 0 100%, 0 100%, 0 100%, 0 100%, 0 100%, 0 100%;
+    }
+    75% {
+        background-position: 100% 0, 100% 0, 100% 0, 100% 0, 100% 0, 100% 0;
     }
     100% {
-        background-position: 100% 100%;
+        background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0;
     }
 }
-
 @keyframes pulse-text-blue {
     0% {
         transform: scale(1);
         color: var(--light-text);
         text-shadow: 0 0 4px var(--neon-blue), 0 0 11px var(--neon-blue), 0 0 19px var(--neon-blue);
     }
-    70% {
+    50% {
         transform: scale(1.05);
         color: var(--neon-blue);
         text-shadow: 0 0 20px var(--neon-blue), 0 0 30px var(--neon-pink), 0 0 40px var(--neon-blue);
@@ -72,8 +80,8 @@
         color: var(--neon-pink);
         text-shadow: 0 0 4px var(--neon-pink), 0 0 11px var(--neon-blue), 0 0 19px var(--neon-pink);
     }
-    70% {
-        transform: scale(0.95);
+    50% {
+        transform: scale(1.05);
         color: var(--light-text);
         text-shadow: 0 0 20px var(--neon-pink), 0 0 30px var(--neon-pink), 0 0 40px var(--neon-pink);
     }
@@ -83,48 +91,88 @@
         text-shadow: 0 0 4px var(--neon-pink), 0 0 11px var(--neon-blue), 0 0 19px var(--neon-pink);
     }
 }
+.cyber-rain {
+    background-color: var(--dark-background);
+    margin: 0;
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Arrange items vertically */
+    border-radius: 5px; /* Rounded corners for the container */
+    overflow: hidden; /* Ensure the shadow doesn't leak outside the border-radius */
+    background-image:
+        /* Horizontal lines */
+            linear-gradient(0deg, rgba(0, 255, 255, 0.5), rgba(0, 255, 255, 0.5) 1px, transparent 1px, transparent),
+            linear-gradient(0deg, rgba(0, 255, 0, 0.5), rgba(0, 255, 0, 0.5) 1px, transparent 1px, transparent),
+            linear-gradient(0deg, rgba(255, 0, 127, 0.5), rgba(255, 0, 127, 0.5) 1px, transparent 1px, transparent),
+                /* Vertical lines */
+            linear-gradient(90deg, rgba(0, 255, 255, 0.5), rgba(0, 255, 255, 0.5) 1px, transparent 1px, transparent),
+            linear-gradient(90deg, rgba(0, 255, 0, 0.5), rgba(0, 255, 0, 0.5) 1px, transparent 1px, transparent),
+            linear-gradient(90deg, rgba(255, 0, 127, 0.5), rgba(255, 0, 127, 0.5) 1px, transparent 1px, transparent);
 
+    /* Adjust the size of the "circuit lines" */
+    background-size: 50px 50px, 100px 100px, 150px 150px, 50px 50px, 100px 100px, 150px 150px;
+    /* Make the background fixed to create a parallax-like effect */
+    background-attachment: fixed;
+    animation: moveGrid 60s cubic-bezier(0,0,1,1) infinite;
+    will-change: background-position;
+}
 .pulsing-text {
     display: inline-block; /* Required for transform to work */
     animation: pulse-text-blue 6s infinite ease-in-out;
+    will-change: transform, color, text-shadow;
 }
-
+.pulsing-text:hover {
+    animation: none;
+    will-change: transform, color, text-shadow;
+}
 .pulsing-header {
     display: inline-block; /* Required for transform to work */
     animation: pulse-text-pink 6s infinite ease-in-out;
+    will-change: transform, color, text-shadow;
 }
-
 .pulse-blue {
     animation: pulse-blue 6s infinite ease-in-out;
+    will-change: box-shadow;
 }
-
+.pulse-blue:hover {
+    animation: none;
+    will-change: box-shadow;
+}
 .pulse-green {
     animation: pulse-green 6s infinite ease-in-out;
+    will-change: box-shadow;
 }
-
 body {
     font-family: 'Orbitron', sans-serif;
     margin: 0;
     padding: 0;
-    background: none; /* Make body background transparent */
     display: flex;
+    background: none;
     justify-content: center;
     align-items: center;
     width: 100vw; /* Full viewport width */
     overflow: hidden; /* Hide scrollbars */
     opacity: 90%;
+    min-width: 300px;
+}
+.top-container {
+    padding: 10px;
+    margin: 0;
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Arrange items vertically */
+    border-radius: 5px; /* Rounded corners for the container */
+    background-color: var(--light-background); /* Darker background for the container */
+    overflow: hidden; /* Ensure the shadow doesn't leak outside the border-radius */
 }
 .container {
-    padding: 20px;
-    margin: 0px;
+    padding: 10px;
+    margin: 0;
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Arrange items vertically */
     border-radius: 5px; /* Rounded corners for the container */
     box-shadow: 0 0 10px var(--shadow-green) inset; /* Shadow for 3D effect */
-    background-color: var(--dark-background);; /* Dark background for the container */
-
-    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0.05) 75%, transparent 75%, transparent);
-    background-size: 50px 50px;
-    animation: moveGrid 10s linear infinite;
+    background-color: var(--light-background); /* Darker background for the container */
     overflow: hidden; /* Ensure the shadow doesn't leak outside the border-radius */
+    opacity: 80%;
 }
 h1, h2 {
     color: var(--neon-pink);
@@ -136,19 +184,19 @@ h2 {
 }
 h1 {
     margin-top: 0;
-    margin-bottom: 20px; /* Add space below the header */
+    margin-bottom: 10px; /* Add space below the header */
     font-size: 3em; /* Larger font size for headers */
 }
 label {
     display: flex; /* Use flexbox for layout */
     justify-content: space-between; /* Space between label text and input/toggle */
     align-items: center; /* Align items vertically */
-    margin-bottom: 10px; /* Space below labels */
     padding: 10px;
     border: 1px solid var(--neon-green); /* Green border for the labels */
     border-radius: 15px; /* Rounded edges for the labels */
     box-shadow: 0 0 10px var(--shadow-green) inset; /* Inner shadow for a 3D effect */
     background-color: var(--dark-background); /* Slightly lighter background for label area */
+    opacity: 100%;
 }
 label > span.label-text {
     /* Explicitly define a span to hold the label text to better control layout */
@@ -166,16 +214,17 @@ input[type="checkbox"] {
     display: none; /* Hide checkbox */
 }
 input[type="time"] {
-    background-color: #222; /* Darker element backgrounds */
+    background-color: var(--light-background); /* Darker element backgrounds */
     border: 1px solid var(--neon-blue);
     color: var(--neon-blue);
-    margin-right: 10px;
+    margin-right: 0;
     border-radius: 5px; /* Rounded corners for input fields */
     padding: 5px;
     box-shadow: 0 4px var(--shadow-blue); /* 3D effect for input fields */
     margin-bottom: 10px; /* Add space below the input */
     display: inline-block; /* Make input inline-block for same-line layout */
     vertical-align: middle; /* Align the input with the label */
+
 }
 input[type="time"]:focus {
     box-shadow: 0 0 8px 0 var(--shadow-blue); /* Focus effect */
@@ -207,12 +256,7 @@ input:checked + .toggle-switch {
 input[type="checkbox"]:checked + .toggle-switch::before {
     transform: translateX(26px); /* Move the toggle knob to the right */
 }
-input[type="time"] {
-    background-color: #222; /* Darker element backgrounds */
-    border: 1px solid var(--neon-blue);
-    color: var(--neon-blue);
-    margin-right: 0;
-}
+
 button {
     background-color: var(--neon-pink);
     border: none;
@@ -247,6 +291,13 @@ div#buttonDiv {
     align-items: center; /* Align items vertically */
     margin-bottom: 5px; /* Space below buttons */
 }
-div {
-    margin-top: 20px;
+.time-input-container {
+    position: relative; /* Container for positioning */
+    display: inline-block; /* Or 'block', depending on layout */
+    /* Adjust the width as needed or leave it out for automatic sizing */
+    margin-top: 10px;
+    margin-bottom: 10px;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }

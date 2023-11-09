@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,35 +5,47 @@
     <link rel="stylesheet" href="options.css">
 </head>
 <body>
-<div class="container pulse-blue"> <!-- Container to hold all the elements -->
-<h1 class="pulsing-header">Keep Awake Options</h1>
-    <div>
-<label class="pulse-green">
-    <span class="label-text pulsing-text">Keep device awake</span>
-    <input type="checkbox" id="toggleAwake">
-    <span class="toggle-switch pulse-blue"></span>
-</label>
-</div>
-<div>
-    <h2 class="pulsing-header">Schedule</h2>
-    <label class="pulse-green">
-        <span class="label-text pulsing-text">Disable Schedule</span>
-        <input type="checkbox" id="disableSchedule">
-        <span class="toggle-switch pulse-blue"></span>
-    </label>
-    <label for="startTime" class="pulse-green">
-        <span class="label-text pulsing-text">Start Time:</span>
-        <input type="time" id="startTime" class="pulse-blue">
-    </label>
-    <label for="endTime" class="pulse-green">
-        <span class="label-text pulsing-text">End Time:</span>
-        <input type="time" id="endTime" class="pulse-blue">
-    </label>
-    <div id="buttonDiv">
-        <button id="setSchedule">Set Schedule</button>
-        <button id="clearSchedule">Clear Schedule</button>
+<div class="top-container pulse-blue"> <!-- Container to hold all the elements -->
+    <div class="cyber-rain">
+        <div class="container pulse-green">
+            <h1 class="pulsing-header">Keep Awake</h1>
+        </div>
+        <div class="container pulse-green">
+        <div class="time-input-container">
+            <label class="pulse-green">
+                <span class="label-text pulsing-text">Keep Awake</span>
+                <input type="checkbox" id="toggleAwake">
+                <span class="toggle-switch pulse-blue"></span>
+            </label>
+        </div>
+        </div>
+        <div class="container pulse-green">
+            <h2 class="pulsing-header">Schedule</h2>
+            <div class="time-input-container">
+                <label class="pulse-green">
+                    <span class="label-text pulsing-text">Disable Schedule</span>
+                    <input type="checkbox" id="disableSchedule">
+                    <span class="toggle-switch pulse-blue"></span>
+                </label>
+            </div>
+            <div class="time-input-container">
+                <label for="startTime" class="pulse-green">
+                    <span class="label-text pulsing-text">Start Time:</span>
+                    <input type="time" id="startTime" class="pulse-blue">
+                </label>
+            </div>
+            <div class="time-input-container">
+                <label for="endTime" class="pulse-green">
+                    <span class="label-text pulsing-text">End Time:</span>
+                    <input type="time" id="endTime" class="pulse-blue">
+                </label>
+            </div>
+            <div id="buttonDiv">
+                <button id="setSchedule">Set Schedule</button>
+                <button id="clearSchedule">Clear Schedule</button>
+            </div>
+        </div>
     </div>
-</div>
 </div>
 <script src="options.js"></script>
 </body>
