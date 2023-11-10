@@ -43,13 +43,25 @@
     0% {
         background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0;
     }
-    25% {
+    12% {
         background-position: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
     }
-    50% {
+    25% {
+        background-position: 100% 0, 100% 0, 100% 0, 100% 0, 100% 0, 100% 0;
+    }
+    37% {
         background-position: 0 100%, 0 100%, 0 100%, 0 100%, 0 100%, 0 100%;
     }
+    50% {
+        background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0;
+    }
+    63% {
+        background-position: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+    }
     75% {
+        background-position: 0 100%, 0 100%, 0 100%, 0 100%, 0 100%, 0 100%;
+    }
+    88% {
         background-position: 100% 0, 100% 0, 100% 0, 100% 0, 100% 0, 100% 0;
     }
     100% {
@@ -100,19 +112,19 @@
     overflow: hidden; /* Ensure the shadow doesn't leak outside the border-radius */
     background-image:
         /* Horizontal lines */
-            linear-gradient(0deg, rgba(0, 255, 255, 0.5), rgba(0, 255, 255, 0.5) 1px, transparent 1px, transparent),
-            linear-gradient(0deg, rgba(0, 255, 0, 0.5), rgba(0, 255, 0, 0.5) 1px, transparent 1px, transparent),
-            linear-gradient(0deg, rgba(255, 0, 127, 0.5), rgba(255, 0, 127, 0.5) 1px, transparent 1px, transparent),
+            linear-gradient(0deg, rgba(0, 255, 255, 0.7), rgba(0, 255, 255, 0.7) 1px, transparent 1px, transparent),
+            linear-gradient(0deg, rgba(0, 255, 0, 0.7), rgba(0, 255, 0, 0.7) 1px, transparent 1px, transparent),
+            linear-gradient(0deg, rgba(255, 0, 127, 0.7), rgba(255, 0, 127, 0.7) 1px, transparent 1px, transparent),
                 /* Vertical lines */
-            linear-gradient(90deg, rgba(0, 255, 255, 0.5), rgba(0, 255, 255, 0.5) 1px, transparent 1px, transparent),
-            linear-gradient(90deg, rgba(0, 255, 0, 0.5), rgba(0, 255, 0, 0.5) 1px, transparent 1px, transparent),
-            linear-gradient(90deg, rgba(255, 0, 127, 0.5), rgba(255, 0, 127, 0.5) 1px, transparent 1px, transparent);
+            linear-gradient(90deg, rgba(0, 255, 255, 0.7), rgba(0, 255, 255, 0.7) 1px, transparent 1px, transparent),
+            linear-gradient(90deg, rgba(0, 255, 0, 0.7), rgba(0, 255, 0, 0.7) 1px, transparent 1px, transparent),
+            linear-gradient(90deg, rgba(255, 0, 127, 0.7), rgba(255, 0, 127, 0.7) 1px, transparent 1px, transparent);
 
     /* Adjust the size of the "circuit lines" */
     background-size: 50px 50px, 100px 100px, 150px 150px, 50px 50px, 100px 100px, 150px 150px;
     /* Make the background fixed to create a parallax-like effect */
     background-attachment: fixed;
-    animation: moveGrid 60s cubic-bezier(0,0,1,1) infinite;
+    animation: moveGrid 54s cubic-bezier(0,0,1,1) infinite;
     will-change: background-position;
 }
 .pulsing-text {
@@ -152,7 +164,7 @@ body {
     width: 100vw; /* Full viewport width */
     overflow: hidden; /* Hide scrollbars */
     opacity: 90%;
-    min-width: 300px;
+
 }
 .top-container {
     padding: 10px;
@@ -162,6 +174,7 @@ body {
     border-radius: 5px; /* Rounded corners for the container */
     background-color: var(--light-background); /* Darker background for the container */
     overflow: hidden; /* Ensure the shadow doesn't leak outside the border-radius */
+    width: auto;
 }
 .container {
     padding: 10px;
@@ -203,6 +216,7 @@ label > span.label-text {
     margin-right: 0.5em; /* Space after the label text */
     font-size: medium;
     color: var(--neon-blue);
+    opacity: 100%;
 }
 input[type="checkbox"], input[type="time"] {
     /* ... existing checkbox and time input styles ... */
@@ -221,10 +235,8 @@ input[type="time"] {
     border-radius: 5px; /* Rounded corners for input fields */
     padding: 5px;
     box-shadow: 0 4px var(--shadow-blue); /* 3D effect for input fields */
-    margin-bottom: 10px; /* Add space below the input */
     display: inline-block; /* Make input inline-block for same-line layout */
     vertical-align: middle; /* Align the input with the label */
-
 }
 input[type="time"]:focus {
     box-shadow: 0 0 8px 0 var(--shadow-blue); /* Focus effect */
@@ -256,7 +268,6 @@ input:checked + .toggle-switch {
 input[type="checkbox"]:checked + .toggle-switch::before {
     transform: translateX(26px); /* Move the toggle knob to the right */
 }
-
 button {
     background-color: var(--neon-pink);
     border: none;
