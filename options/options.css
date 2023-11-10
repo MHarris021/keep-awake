@@ -71,18 +71,18 @@
 @keyframes pulse-text-blue {
     0% {
         transform: scale(1);
-        color: var(--light-text);
-        text-shadow: 0 0 4px var(--neon-blue), 0 0 11px var(--neon-blue), 0 0 19px var(--neon-blue);
+        color: var(--neon-blue);
+        text-shadow: 0 0 4px var(--neon-blue), 0 0 11px var(--neon-pink), 0 0 19px var(--neon-blue);
     }
     50% {
         transform: scale(1.05);
-        color: var(--neon-blue);
-        text-shadow: 0 0 20px var(--neon-blue), 0 0 30px var(--neon-pink), 0 0 40px var(--neon-blue);
+        color: var(--light-text);
+        text-shadow: 0 0 20px var(--neon-blue), 0 0 30px var(--neon-blue), 0 0 40px var(--neon-blue);
     }
     100% {
         transform: scale(1);
-        color: var(--light-text);
-        text-shadow: 0 0 4px var(--neon-blue), 0 0 11px var(--neon-blue), 0 0 19px var(--neon-blue);
+        color: var(--neon-blue);
+        text-shadow: 0 0 4px var(--neon-blue), 0 0 11px var(--neon-pink), 0 0 19px var(--neon-blue);
     }
 }
 
@@ -134,12 +134,23 @@
 }
 .pulsing-text:hover {
     animation: none;
+    color: var(--light-text);
+    text-shadow: 0 0 20px var(--neon-blue), 0 0 30px var(--neon-blue), 0 0 40px var(--neon-blue);
     will-change: transform, color, text-shadow;
+}
+.no-pulsing-text {
+    color: var(--light-text);
+    text-shadow: 0 0 20px var(--neon-blue), 0 0 30px var(--neon-blue), 0 0 40px var(--neon-blue);
 }
 .pulsing-header {
     display: inline-block; /* Required for transform to work */
     animation: pulse-text-pink 6s infinite ease-in-out;
     will-change: transform, color, text-shadow;
+}
+.no-pulsing-header {
+    display: inline-block; /* Required for transform to work */
+    color: var(--light-text);
+    text-shadow: 0 0 20px var(--neon-pink), 0 0 30px var(--neon-pink), 0 0 40px var(--neon-pink);
 }
 .pulse-blue {
     animation: pulse-blue 6s infinite ease-in-out;
@@ -147,11 +158,18 @@
 }
 .pulse-blue:hover {
     animation: none;
+    box-shadow: 0 0 10px var(--neon-blue) inset;
     will-change: box-shadow;
 }
 .pulse-green {
     animation: pulse-green 6s infinite ease-in-out;
     will-change: box-shadow;
+}
+.no-pulse-green {
+    box-shadow: 0 0 10px var(--neon-green) inset;
+}
+.no-pulse-blue {
+    box-shadow: 0 0 10px var(--neon-blue) inset;
 }
 body {
     font-family: 'Orbitron', sans-serif;
@@ -234,12 +252,15 @@ input[type="time"] {
     margin-right: 0;
     border-radius: 5px; /* Rounded corners for input fields */
     padding: 5px;
-    box-shadow: 0 4px var(--shadow-blue); /* 3D effect for input fields */
+    box-shadow: 0 0 10px var(--shadow-blue); /* 3D effect for input fields */
     display: inline-block; /* Make input inline-block for same-line layout */
     vertical-align: middle; /* Align the input with the label */
 }
+input[type="time"]:hover,
 input[type="time"]:focus {
-    box-shadow: 0 0 8px 0 var(--shadow-blue); /* Focus effect */
+    outline: none;
+    border-color: var(--neon-pink);
+    box-shadow: 0 0 10px var(--shadow-pink) inset;
 }
 .toggle-switch {
     position: relative;
@@ -248,7 +269,13 @@ input[type="time"]:focus {
     height: 34px;
     background-color: var(--toggle-off);
     border-radius: 34px; /* Rounded corners for the toggle-switch */
-    box-shadow: 0 2px 4px var(--shadow-blue) inset; /* Inner shadow for a 3D effect */
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 10px var(--shadow-blue) inset; /* Inner shadow for a 3D effect */
+}
+.toggle-switch:hover{
+    cursor: pointer;
+    background-color: var(--shadow-blue);
+    box-shadow: 0 0 10px var(--shadow-pink) inset;
 }
 .toggle-switch::before {
     content: "";
