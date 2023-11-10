@@ -1,6 +1,6 @@
 
 chrome.runtime.onInstalled.addListener(() => {
-    chrome.storage.local.set({ keepAwakeEnabled: false, disableSchedule: false });
+    chrome.storage.local.set({ keepAwakeEnabled: false, disableSchedule: false, startTime: '', endTime: '', suspendPulsing: false });
 });
 
 chrome.alarms.onAlarm.addListener((alarm) => {
@@ -8,6 +8,7 @@ chrome.alarms.onAlarm.addListener((alarm) => {
         checkSchedule();
     }
 });
+
 
 function checkSchedule() {
     chrome.storage.local.get(['keepAwakeEnabled', 'disableSchedule', 'startTime', 'endTime'], function(result) {

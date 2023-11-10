@@ -1,11 +1,12 @@
 
 document.addEventListener('DOMContentLoaded', function() {
-    var checkbox = document.getElementById('toggleAwake');
-    var disableScheduleCheckbox = document.getElementById('disableSchedule');
-    var setScheduleButton = document.getElementById('setSchedule');
-    var clearScheduleButton = document.getElementById('clearSchedule');
-    var startTimeInput = document.getElementById('startTime');
-    var endTimeInput = document.getElementById('endTime');
+    let checkbox = document.getElementById('toggleAwake');
+    let disableScheduleCheckbox = document.getElementById('disableSchedule');
+    let setScheduleButton = document.getElementById('setSchedule');
+    let clearScheduleButton = document.getElementById('clearSchedule');
+    let startTimeInput = document.getElementById('startTime');
+    let endTimeInput = document.getElementById('endTime');
+
 
     // Load the initial state of the checkbox and the schedule
     chrome.storage.local.get(['keepAwakeEnabled', 'disableSchedule', 'startTime', 'endTime'], function(result) {

@@ -339,3 +339,84 @@ div#buttonDiv {
     align-items: center;
     width: 100%;
 }
+@keyframes rotateGear {
+    0% {
+        transform: translate(0%, -50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(0%, -50%) rotate(360deg);
+    }
+}
+.footer {
+    padding: 5px 0 5px 0;
+    margin: 0;
+    display: flex; /* Use flexbox for layout */
+    flex-direction: row; /* Arrange items vertically */
+    justify-content: end;
+    background-color: var(--light-background); /* Darker background for the container */
+    overflow: hidden; /* Ensure the shadow doesn't leak outside the border-radius */
+    opacity: 80%;
+}
+.gear-icon {
+    position: absolute;
+    width: 5px; /* Size of the gear */
+    height: 5px;
+    right: 12px;
+    border: 2px solid var(--neon-blue); /* Outer ring */
+    border-radius: 50%;
+    box-shadow: 0 0 3px var(--neon-blue), 0 0 6px var(--neon-blue); /* Neon glow effect */
+}
+
+.gear-icon::before,
+.gear-icon::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: -5px;
+    width: 5px; /* Size of the center circle */
+    height: 5px;
+    background: var(--neon-blue);
+    border-radius: 50%;
+    transform: translate(0, -50%);
+}
+.gear-icon::after {
+    width: 100%; /* Full width and height for the spokes */
+    height: 100%;
+    background: transparent;
+    border: 5px solid transparent;
+    border-top: 5px solid var(--neon-blue); /* Top spoke */
+    border-right: 5px solid var(--neon-blue); /* Right spoke */
+    border-bottom: 5px solid var(--neon-blue); /* Bottom spoke */
+    border-left: 5px solid var(--neon-blue); /* Left spoke */
+    box-shadow: 0 0 3px var(--neon-blue), 0 0 6px var(--neon-blue); /* Glow effect on spokes */
+    animation: rotateGear 10s linear infinite;
+}
+/* Style for the button */
+.gear-button {
+    border: none;
+    background: transparent;
+    border-radius: 0;
+    outline: none;
+    margin: 0;
+    padding: 10px 10px 10px 10px;
+    box-shadow: none;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    position: relative; /* To position the gear icon inside */
+    display: inline-block; /* Allows the button to shrink to the size of the icon */
+    /* You can add padding and margin as per your design requirements */
+}
+.gear-button:hover {
+    background: transparent;
+    box-shadow: none;
+}
+.gear-button:active {
+    background: transparent;
+    box-shadow: none;
+    transform: none;
+}
+.gear-button:focus {
+    background: transparent;
+    box-shadow: none;
+}
